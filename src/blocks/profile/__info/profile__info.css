@@ -1,0 +1,19 @@
+.profile__info {
+  display: flex;
+  padding-right: 20px; /* добавлен padding для предотвращения слипания блоков с profile__add-button при длинном тексте */
+}
+
+@media screen and (max-width: 999px) {
+  .profile__info {
+    padding-left: 20px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .profile__info {
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
