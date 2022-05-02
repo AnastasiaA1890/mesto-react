@@ -5,8 +5,8 @@ import {api} from "../utils/Api";
 function Main(props) {
   const [userName, setUserName] = React.useState('User');
   const [userDescription, setUserDescription] = React.useState("Developer");
-  const [userAvatar, setAvatar] = React.useState();
-  let [cardsData, setCardsData] = useState([]);
+  const [userAvatar, setAvatar] = React.useState('');
+  const [cardsData, setCardsData] = useState([]);
 
   React.useEffect(() => {
     api.getInitialCards()

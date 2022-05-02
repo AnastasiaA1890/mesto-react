@@ -7,10 +7,10 @@ import ImagePopup from "./ImagePopup";
 
 function App() {
 
-  let [isEditAvatarPopupOpen, setAvatarModalIsOpen] = useState(false);
-  let [isEditProfilePopupOpen, setEditProfileModalIsOpen] = useState(false);
-  let [isAddPlacePopupOpen, setAddPlaceModalIsOpen] = useState(false);
-  let [selectedCard, setSelectedCard] = useState();
+  const [isEditAvatarPopupOpen, setAvatarModalIsOpen] = useState(false);
+  const [isEditProfilePopupOpen, setEditProfileModalIsOpen] = useState(false);
+  const [isAddPlacePopupOpen, setAddPlaceModalIsOpen] = useState(false);
+  const [selectedCard, setSelectedCard] = useState(null);
 
   const handleEditAvatarClick = () => {
     setAvatarModalIsOpen(true);
@@ -39,8 +39,10 @@ function App() {
     <div className="page">
       <div className="container">
         <Header/>
-        <Main onEditAvatar={handleEditAvatarClick} onEditProfile={handleEditProfileClick}
-              onAddPlace={handleAddPlaceClick} onCardClick={handleCardClick}/>
+        <Main onEditAvatar={handleEditAvatarClick}
+              onEditProfile={handleEditProfileClick}
+              onAddPlace={handleAddPlaceClick}
+              onCardClick={handleCardClick}/>
         <Footer/>
         {/*Окно редактировать профиль*/}
         <PopupWithForm isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} title="Редактировать профиль"
