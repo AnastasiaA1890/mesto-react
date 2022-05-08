@@ -1,43 +1,11 @@
 import React, {useState} from "react";
 import Card from "./Card";
-import {api} from "../utils/Api";
+import {CurrentUserContext} from "../contexts/CurrentUserContext";
+import {NewCardsContext} from "../contexts/NewCardsContext";
 
 function Main(props) {
-  const [userName, setUserName] = React.useState('User');
-  const [userDescription, setUserDescription] = React.useState("Developer");
-  const [userAvatar, setAvatar] = React.useState('');
-  const [cardsData, setCardsData] = useState([]);
-
-  React.useEffect(() => {
-    api.getInitialCards()
-      .then((res) => {
-        const card = res.map((cardsData) => {
-          return {
-            name: cardsData.name,
-            link: cardsData.link,
-            likes: cardsData.likes.length,
-            id: cardsData._id
-          }
-        })
-        setCardsData(card)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-
-  }, [])
-
-  React.useEffect(() => {
-    api.getUserData()
-      .then((res) => {
-        setUserName(res.name)
-        setUserDescription(res.about)
-        setAvatar(res.avatar)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }, [])
+  const userContext = React.useContext(CurrentUserContext);
+  const cardsContext = React.useContext(NewCardsContext);
 
   return (
     <main className="content">
@@ -45,13 +13,13 @@ function Main(props) {
       <section className="profile">
         <div className="profile__info">
           <button onClick={props.onEditAvatar} className="profile__avatar-button">
-            <img src={userAvatar}  alt="Аватар пользователя" className="profile__avatar"/>
+            <img src={userContext.avatar} alt="Аватар пользователя" className="profile__avatar"/>
           </button>
           <div className="profile__fields">
-            <h1 className="profile__name">{userName}</h1>
+            <h1 className="profile__name">{userContext.name}</h1>
             <button onClick={props.onEditProfile} type="button" aria-label="Кнопка редактирования профиля"
                     className="profile__button"/>
-            <p className="profile__description">{userDescription}</p>
+            <p className="profile__description">{userContext.about}</p>
           </div>
         </div>
         <button onClick={props.onAddPlace} type="button" aria-label="Кнопка добавления карточки"
@@ -60,7 +28,7 @@ function Main(props) {
       {/*Секция elements*/}
       <section className="elements">
         {
-          cardsData.map((card) => (
+          cardsContext.map((card) => (
             <Card card={card} key={card.id} onCardClick={props.onCardClick}/>
           ))
         }
