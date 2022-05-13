@@ -8,31 +8,25 @@
 
 </p>
 
-## Описание
+## Description
 
-Данный проект реализован в рамках обучения программы "Веб разработчик" Яндекса.  
-Сайт реализован React. Примененные технологии:
-* гибкая система раскладки блоков Flex
-* гибкая система раскладки блоков Grid
-* резиновая и адаптивная верстки для десктопных версий, планшетов и смартфонов
-* технология transform
-* API данные
-* React hooks
+This project was implemented as part of the Yandex Web Developer training program.
+* Implemented Popup window with the ability to edit the name and description of the user.
+* Implemented Popup window with the ability to add new card with image and description.
+* Implemented Popup window with the ability to enlarge the image.
+* Implemented Popup window with the ability to change user avatar.
+  
+The website is implemented by React. Applied technologies:
+* OOP
+* hooks (useRef, useState, useEffect)
+* getting the information using API
+* useContext
 
-Реализованно Popup окно с возможностью редактирования имени и описания пользователя. Реализованно Popup окно с возможностью добавления
-картинки и ее описания по ссылке. Реализованно Popup окно с возможностью увеличения картинки.
-Примененные технологии:
-* JavaScript
-
-## План по доработке
-
-Планируется реализовать сохранение данных на сервере
-
-## Демо сайта
+## Demo
 
 <p align="center">
 
-[Ссылка на проект](https://anastasiaa1890.github.io/mesto/)
+[The link](https://anastasiaa1890.github.io/mesto/)
 
 <img src="https://i.postimg.cc/PrRpDg4v/Group-3.png" >
 
