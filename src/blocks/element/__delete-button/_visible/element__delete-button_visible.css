@@ -1,6 +1,6 @@
-.element__delete-button {
+.element__delete-button_visible {
   position: absolute;
-  background-image: url("../../../images/delete_button.svg");
+  background-image: url("../../../../images/delete_button.svg");
   background-repeat: no-repeat;
   width: 18px;
   height: 19px;

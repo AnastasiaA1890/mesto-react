@@ -1,15 +1,13 @@
 import React, {useState} from "react";
 import Card from "./Card";
 import {CurrentUserContext} from "../contexts/CurrentUserContext";
-import {NewCardsContext} from "../contexts/NewCardsContext";
 
 function Main(props) {
   const userContext = React.useContext(CurrentUserContext);
-  const cardsContext = React.useContext(NewCardsContext);
 
   return (
     <main className="content">
-      {/*Секция profile*/}
+      {/*Profile section*/}
       <section className="profile">
         <div className="profile__info">
           <button onClick={props.onEditAvatar} className="profile__avatar-button">
@@ -25,17 +23,23 @@ function Main(props) {
         <button onClick={props.onAddPlace} type="button" aria-label="Кнопка добавления карточки"
                 className="profile__add-button"/>
       </section>
-      {/*Секция elements*/}
+      {/*Elements section*/}
       <section className="elements">
         {
-          cardsContext.map((card) => (
-            <Card card={card} key={card.id} onCardClick={props.onCardClick}/>
+          props.cards.map((card) => (
+            <Card
+              onCardLike={props.onCardLike}
+              onCardDelete={props.onCardDelete}
+              card={card}
+              key={card._id}
+              onCardClick={props.onCardClick}/>
           ))
         }
       </section>
     </main>
   );
 }
+
 
 export default Main
 

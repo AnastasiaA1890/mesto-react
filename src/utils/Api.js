@@ -45,7 +45,7 @@ class Api {
       })
   }
 
-  editAvatar({avatar}) {
+  editAvatar(avatar) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
       headers: this._headers,
@@ -88,6 +88,14 @@ class Api {
       headers: this._headers,
     })
       .then(this._checkResponse)
+  }
+
+  changeLikeCardStatus(id, isLiked) {
+    if(isLiked){
+      return this.addLike(id)
+    } else {
+      return this.deleteLike(id)
+    }
   }
 }
 
