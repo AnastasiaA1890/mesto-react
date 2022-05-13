@@ -17,7 +17,7 @@ function App() {
   const [isEditProfilePopupOpen, setEditProfileModalIsOpen] = useState(false);
   const [isAddPlacePopupOpen, setAddPlaceModalIsOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
-  const [currentUser, setCurrentUser] = useState('User');
+  const [currentUser, setCurrentUser] = useState({});
   const [cards, setNewCards] = useState([]);
 
   React.useEffect(() => {
@@ -63,6 +63,9 @@ function App() {
         setNewCards([newCard, ...cards]);
         closeAllPopups();
       })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   const handleCardLike = (card) => {
@@ -71,13 +74,20 @@ function App() {
     api.changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
       setNewCards((cards) => cards.map((c) => c._id === card._id ? newCard : c));
-    });
+    })
+      .catch((err) => {
+        console.log(err)
+      })
+
   }
 
   const handleCardDelete = (card) => {
     api.deleteCard(card._id)
       .then(() => {
         setNewCards((cards) => cards.filter((c) => c._id !== card._id))
+      })
+      .catch((err) => {
+        console.log(err)
       })
   }
 
@@ -94,6 +104,9 @@ function App() {
         setCurrentUser(res)
         closeAllPopups()
       })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   function handleUpdateAvatar({avatar}) {
@@ -101,6 +114,9 @@ function App() {
       .then((res) => {
         setCurrentUser(res)
         closeAllPopups()
+      })
+      .catch((err) => {
+        console.log(err)
       })
   }
 

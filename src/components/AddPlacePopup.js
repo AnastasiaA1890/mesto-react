@@ -6,7 +6,6 @@ function AddPlacePopup(props) {
   const [link, setLink] = useState('');
 
   function handleChangeName(e) {
-    console.log(e.target.value)
     setName(e.target.value)
   }
 
@@ -33,12 +32,12 @@ function AddPlacePopup(props) {
       children={(
         <>
           <label className="popup__field">
-            <input onChange={handleChangeName} type="text" placeholder="Название" name="name" className="popup__input popup__input_title"
+            <input value={name} onChange={handleChangeName} type="text" placeholder="Название" name="name" className="popup__input popup__input_title"
                    id="card-input" minLength="2" maxLength="30" required/>
             <span className="popup__error-visible card-input-error"/>
           </label>
           <label className="popup__field">
-            <input onChange={handleChangeLink} type="url" placeholder="Ссылка на картинку" name="link"
+            <input value={link} onChange={handleChangeLink} type="url" placeholder="Ссылка на картинку" name="link"
                    className="popup__input popup__input_src"
                    id="link-input" required/>
             <span className="popup__error-visible link-input-error"/>

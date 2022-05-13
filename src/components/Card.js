@@ -29,7 +29,7 @@ function Card({onCardClick, card, onCardLike, onCardDelete}) {
   return (
     /*Element card template*/
     <article className="element">
-      <img onClick={handleClick} src={card.link} alt="Фото Парка" className="element__img"/>
+      <img onClick={handleClick} src={card.link} alt={card.name} className="element__img"/>
       <button onClick={handleDeleteClick} className={cardDeleteButtonClassName} type="button" aria-label="Кнопка удаления карточки"/>
       <div className="element__description">
         <h2 className="element__title">{card.name}</h2>
